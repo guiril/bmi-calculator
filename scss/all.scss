@@ -1,7 +1,6 @@
 @import "reset";
 @import "clearfix";
 @import "box-sizing";
-@import "grid";
 
 $gray: #424242;
 $yellow: #FFD366;
@@ -30,25 +29,30 @@ h2 {
 }
 
 .main {
-  height: 300px;
+  height: auto;
+  padding-top: 73px;
+  padding-bottom: 73px;
   background-color: $gray;
-  @include iphone6plus {
-    height: auto;
-    padding: 30px;
+  @media (max-width: 414px) {
+    padding: 20px;
   }
 }
 
 .logo {
   float: left;
-  margin: 92px 97px 92px 173px;
-  @include pad {
-    margin-left: 50px;
-    margin-right: 50px;
+  width: 6.33333%;
+  margin-left: 12%;
+  margin-right: 5%;
+  margin-top: 18px;
+  @media (max-width: 768px) {
+    margin-left: 5%;
   }
-  @include iphone6plus {
-    position: relative;
+  @media (max-width: 414px) {
     float: none;
-    margin: 0;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
     @include clearfix;
   }
   h1 {
@@ -58,17 +62,30 @@ h2 {
     text-indent: 101%;
     overflow: hidden;
     white-space: nowrap;
+    @media (max-width: 414px) {
     float: right;
+    }
+    a {
+      display: block;
+    }
   }
 }
 
 .calculator {
   float: left;
-  margin-top: 73px;
-  margin-bottom: 73px;
+  width: 27.33333%;
+  margin-left: 8%;
   @include clearfix;
-  @include iphone6plus {
+  @media (max-width: 768px) {
+    width: 26.33333%;
+    margin-left: 12%;
+  }
+  @media (max-width: 414px) {
     float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   label {
     display: block;
@@ -77,6 +94,7 @@ h2 {
     font-size: 18px;
   }
   .input-box {
+    width: 100%;
     display: block;
     padding: 8px 16px;
     font-size: 24px;
@@ -84,9 +102,6 @@ h2 {
     background: rgba(255,255,255,0.18);
     border: 2px solid $yellow;
     border-radius: 10px;
-    @include iphone6plus {
-      width: 100%;
-    }
     &:focus {
       outline: none;
     }
@@ -98,16 +113,18 @@ h2 {
 
 .btn {
   float: left;
-  margin-top: 92px;
-  margin-bottom: 88px;
-  margin-left: 53px;
-  @include pad {
-    margin-left: 38px;
+  width: 33.33333%;
+  margin-left: 5%;
+  margin-top: 18px;
+  @media (max-width: 768px) {
+    width: 43.33333%;
+    margin-left: 2%;
   }
-  @include iphone6plus {
+  @media (max-width: 414px) {
     float: none;
-    margin: 0;
-    text-align: right;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
   }
   #calculatorBtn {
     display: block;
@@ -176,9 +193,6 @@ h2 {
   background-color: #F5F5F5;
   padding-top: 48px;
   padding-bottom: 58px;
-  @include iphone6plus {
-    display: none;
-  }
   h2 {
     text-align: center;
     margin-bottom: 36px;
@@ -186,8 +200,11 @@ h2 {
 }
 
 .record-list {
-  width: 700px;
+  width: 68%;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
   li {
     padding: 21px 12px;
     margin-bottom: 16px;
@@ -198,13 +215,30 @@ h2 {
       transform: translateY(5px);
       &:nth-child(1) {
         width: 100px;
+        @media (max-width: 414px) {
+          display: none;
+        }
       }
       &:nth-child(2) {
         margin-left: 20px;
+        @media (max-width: 768px) {
+          margin-left: 0;
+        }
+      }
+      &:nth-child(3) {
+        @media (max-width: 414px) {
+          margin-right: 12px;
+        }
       }
       &:nth-child(4),
       &:nth-child(6) {
         margin-left: 42px;
+        @media (max-width: 768px) {
+          margin-left: 10px;
+        }
+        @media (max-width: 414px) {
+          display: none;
+        }
       }
       &:nth-child(5) {
         width: 60px;
@@ -215,6 +249,9 @@ h2 {
       &:nth-child(8) {
         width: 70px;
         margin-left: 16px;
+        @media (max-width: 600px) {
+          display: none;
+        }
       }
     }
     .regu-txt {

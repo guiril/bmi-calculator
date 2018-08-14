@@ -97,34 +97,39 @@ h2 {
 }
 
 .main {
-  height: 300px;
+  height: auto;
+  padding-top: 73px;
+  padding-bottom: 73px;
   background-color: #424242;
 }
 
 @media (max-width: 414px) {
   .main {
-    height: auto;
-    padding: 30px;
+    padding: 20px;
   }
 }
 
 .logo {
   float: left;
-  margin: 92px 97px 92px 173px;
+  width: 6.33333%;
+  margin-left: 12%;
+  margin-right: 5%;
+  margin-top: 18px;
 }
 
 @media (max-width: 768px) {
   .logo {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 5%;
   }
 }
 
 @media (max-width: 414px) {
   .logo {
-    position: relative;
     float: none;
-    margin: 0;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
   }
   .logo::after {
     display: block;
@@ -140,13 +145,22 @@ h2 {
   text-indent: 101%;
   overflow: hidden;
   white-space: nowrap;
-  float: right;
+}
+
+@media (max-width: 414px) {
+  .logo h1 {
+    float: right;
+  }
+}
+
+.logo h1 a {
+  display: block;
 }
 
 .calculator {
   float: left;
-  margin-top: 73px;
-  margin-bottom: 73px;
+  width: 27.33333%;
+  margin-left: 8%;
 }
 
 .calculator::after {
@@ -155,9 +169,20 @@ h2 {
   content: "";
 }
 
+@media (max-width: 768px) {
+  .calculator {
+    width: 26.33333%;
+    margin-left: 12%;
+  }
+}
+
 @media (max-width: 414px) {
   .calculator {
     float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 
@@ -169,6 +194,7 @@ h2 {
 }
 
 .calculator .input-box {
+  width: 100%;
   display: block;
   padding: 8px 16px;
   font-size: 24px;
@@ -176,12 +202,6 @@ h2 {
   background: rgba(255, 255, 255, 0.18);
   border: 2px solid #FFD366;
   border-radius: 10px;
-}
-
-@media (max-width: 414px) {
-  .calculator .input-box {
-    width: 100%;
-  }
 }
 
 .calculator .input-box:focus {
@@ -194,22 +214,24 @@ h2 {
 
 .btn {
   float: left;
-  margin-top: 92px;
-  margin-bottom: 88px;
-  margin-left: 53px;
+  width: 33.33333%;
+  margin-left: 5%;
+  margin-top: 18px;
 }
 
 @media (max-width: 768px) {
   .btn {
-    margin-left: 38px;
+    width: 43.33333%;
+    margin-left: 2%;
   }
 }
 
 @media (max-width: 414px) {
   .btn {
     float: none;
-    margin: 0;
-    text-align: right;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
   }
 }
 
@@ -294,20 +316,20 @@ h2 {
   padding-bottom: 58px;
 }
 
-@media (max-width: 414px) {
-  .record {
-    display: none;
-  }
-}
-
 .record h2 {
   text-align: center;
   margin-bottom: 36px;
 }
 
 .record-list {
-  width: 700px;
+  width: 68%;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .record-list {
+    width: 90%;
+  }
 }
 
 .record-list li {
@@ -332,12 +354,42 @@ h2 {
   width: 100px;
 }
 
+@media (max-width: 414px) {
+  .record-list li span:nth-child(1) {
+    display: none;
+  }
+}
+
 .record-list li span:nth-child(2) {
   margin-left: 20px;
 }
 
+@media (max-width: 768px) {
+  .record-list li span:nth-child(2) {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 414px) {
+  .record-list li span:nth-child(3) {
+    margin-right: 12px;
+  }
+}
+
 .record-list li span:nth-child(4), .record-list li span:nth-child(6) {
   margin-left: 42px;
+}
+
+@media (max-width: 768px) {
+  .record-list li span:nth-child(4), .record-list li span:nth-child(6) {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 414px) {
+  .record-list li span:nth-child(4), .record-list li span:nth-child(6) {
+    display: none;
+  }
 }
 
 .record-list li span:nth-child(5) {
@@ -351,6 +403,12 @@ h2 {
 .record-list li span:nth-child(8) {
   width: 70px;
   margin-left: 16px;
+}
+
+@media (max-width: 600px) {
+  .record-list li span:nth-child(8) {
+    display: none;
+  }
 }
 
 .record-list li .regu-txt {
