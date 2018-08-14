@@ -1,0 +1,388 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+  v2.0 | 20110126
+  License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  font-family: '微軟正黑體';
+}
+
+input {
+  font-family: '微軟正黑體';
+}
+
+h2 {
+  font-size: 24px;
+}
+
+.wrap {
+  max-width: 100%;
+  background-color: #424242;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.container::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.main {
+  height: 300px;
+  background-color: #424242;
+}
+
+@media (max-width: 414px) {
+  .main {
+    height: auto;
+    padding: 30px;
+  }
+}
+
+.logo {
+  float: left;
+  margin: 92px 97px 92px 173px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+@media (max-width: 414px) {
+  .logo {
+    position: relative;
+    float: none;
+    margin: 0;
+  }
+  .logo::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+.logo h1 {
+  width: 117px;
+  height: 117px;
+  background: url(../images/BMICLogo.png) no-repeat;
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  float: right;
+}
+
+.calculator {
+  float: left;
+  margin-top: 73px;
+  margin-bottom: 73px;
+}
+
+.calculator::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 414px) {
+  .calculator {
+    float: none;
+  }
+}
+
+.calculator label {
+  display: block;
+  margin-bottom: 7px;
+  color: #FFD366;
+  font-size: 18px;
+}
+
+.calculator .input-box {
+  display: block;
+  padding: 8px 16px;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid #FFD366;
+  border-radius: 10px;
+}
+
+@media (max-width: 414px) {
+  .calculator .input-box {
+    width: 100%;
+  }
+}
+
+.calculator .input-box:focus {
+  outline: none;
+}
+
+.calculator #height {
+  margin-bottom: 23px;
+}
+
+.btn {
+  float: left;
+  margin-top: 92px;
+  margin-bottom: 88px;
+  margin-left: 53px;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    margin-left: 38px;
+  }
+}
+
+@media (max-width: 414px) {
+  .btn {
+    float: none;
+    margin: 0;
+    text-align: right;
+  }
+}
+
+.btn #calculatorBtn {
+  display: block;
+  width: 120px;
+  height: 120px;
+  font-size: 24px;
+  background: #FFD366;
+  color: #424242;
+  border: none;
+  border-radius: 50%;
+}
+
+.btn #calculatorBtn:hover {
+  -webkit-box-shadow: 0 1px 6px 3px rgba(255, 195, 49, 0.64);
+          box-shadow: 0 1px 6px 3px rgba(255, 195, 49, 0.64);
+  cursor: pointer;
+}
+
+.btn #calculatorBtn:active {
+  background: #DEA921;
+}
+
+.btn #calculatorBtn:focus {
+  outline: none;
+}
+
+.btn .showAnswer {
+  display: none;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid;
+}
+
+.btn #answer {
+  position: absolute;
+  top: 37px;
+  left: 13px;
+  text-align: center;
+  font-size: 32px;
+}
+
+.btn #answer span {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.btn #answer .reset-icon {
+  display: block;
+  width: 35px;
+  height: 35px;
+  -webkit-transform: translate(67px, -15px);
+          transform: translate(67px, -15px);
+  border-radius: 50%;
+  font-size: 20px;
+  color: #424242;
+  border: 3px solid #424242;
+  background-color: #86D73E;
+}
+
+.btn #answer .reset-icon .fas {
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
+.btn #showClassification {
+  position: absolute;
+  top: 38px;
+  -webkit-transform: translateX(128px);
+          transform: translateX(128px);
+  white-space: nowrap;
+  font-size: 32px;
+}
+
+.record {
+  background-color: #F5F5F5;
+  padding-top: 48px;
+  padding-bottom: 58px;
+}
+
+@media (max-width: 414px) {
+  .record {
+    display: none;
+  }
+}
+
+.record h2 {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.record-list {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.record-list li {
+  padding: 21px 12px;
+  margin-bottom: 16px;
+  background: #FFFFFF;
+  border-left: 7px solid;
+}
+
+.record-list li::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.record-list li span {
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+.record-list li span:nth-child(1) {
+  width: 100px;
+}
+
+.record-list li span:nth-child(2) {
+  margin-left: 20px;
+}
+
+.record-list li span:nth-child(4), .record-list li span:nth-child(6) {
+  margin-left: 42px;
+}
+
+.record-list li span:nth-child(5) {
+  width: 60px;
+}
+
+.record-list li span:nth-child(7) {
+  width: 75px;
+}
+
+.record-list li span:nth-child(8) {
+  width: 70px;
+  margin-left: 16px;
+}
+
+.record-list li .regu-txt {
+  font-size: 12px;
+  display: block;
+  float: left;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+  margin-right: 7px;
+}
+
+.record-list li .new-txt {
+  font-size: 20px;
+  display: block;
+  float: left;
+}
+
+.record-list li a {
+  display: block;
+  float: right;
+  font-size: 14px;
+  color: #424242;
+  background-color: #FFD366;
+  padding: 8px;
+}
+
+.record-list li a:hover {
+  background: #DEA921;
+}
+
+.footer {
+  height: 100px;
+  background-color: #FFD366;
+}
+/*# sourceMappingURL=all.css.map */
