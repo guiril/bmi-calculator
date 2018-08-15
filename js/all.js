@@ -91,7 +91,13 @@ function answerStyle(item) {
 function updateList(item) {
   var str = '';
   for (var i = 0; i < item.length; i++) {
-    str += '<li style="border-color: ' + item[i].colorData + ';"><span class="new-txt">' + item[i].classData + '</span><span class="regu-txt">BMI</span><span class="new-txt">' + item[i].bmiData + '</span><span class="regu-txt">Wieght</span><span class="new-txt">' + item[i].weightData + 'kg</span><span class="regu-txt">Height</span><span class="new-txt">' + (item[i].heightData * 100) + 'cm</span> <span class="regu-txt">' + item[i].dateData + '</span><a href="" data-index="' + i + '">清除</a></li>';
+    var color = item[i].colorData;
+    var type = item[i].classData;
+    var bmi = item[i].bmiData;
+    var weight = item[i].weightData;
+    var height = item[i].heightData;
+    var date = item[i].dateData;
+    str += '<li style="border-color: ' + color + ';"><span class="new-txt">' + type + '</span><span class="regu-txt">BMI</span><span class="new-txt">' + bmi + '</span><span class="regu-txt">Wieght</span><span class="new-txt">' + weight + 'kg</span><span class="regu-txt">Height</span><span class="new-txt">' + (height * 100) + 'cm</span> <span class="regu-txt">' + date + '</span><a href="" data-index="' + i + '">清除</a></li>';
   }
   recordList.innerHTML = str;
 }
