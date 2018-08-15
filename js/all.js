@@ -46,12 +46,12 @@ function getBMI() {
 
 
   var allData = {
-    'bmiData': BMI,
-    'weightData': weight,
-    'heightData': height,
-    'classData': classification,
-    'colorData': color,
-    'dateData': mm + '-' + dd + '-' + yyyy
+    bmiData: BMI,
+    weightData: weight,
+    heightData: height,
+    classData: classification,
+    colorData: color,
+    dateData: mm + '-' + dd + '-' + yyyy
   };
 
   // 更新資料 
