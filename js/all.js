@@ -2,6 +2,8 @@ var calculatorBtn = document.querySelector('#calculatorBtn');
 var recordList = document.querySelector('.record-list');
 var dataList = JSON.parse(localStorage.getItem('dataKey')) || [];
 
+updateList(dataList);
+
 // 計算 BMI
 function getBMI() {
   var height = parseInt(document.querySelector('#height').value) / 100;
@@ -43,7 +45,7 @@ function getBMI() {
   }
 
 
-  var bodyData = {
+  var allData = {
     'bmiData': BMI,
     'weightData': weight,
     'heightData': height,
@@ -53,7 +55,7 @@ function getBMI() {
   };
 
   // 更新資料 
-  dataList.push(bodyData);
+  dataList.push(allData);
   updateList(dataList);
   localStorage.setItem('dataKey', JSON.stringify(dataList));
 
@@ -105,24 +107,15 @@ function removeData(e) {
   updateList(dataList);
 }
 
-
-// 頁面載入事件
-window.onload = init;
-
-function init() {
-  // 鍵盤事件
-  var inputBox = document.querySelectorAll('.input-box');
-  for (var i = 0; i < inputBox.length; i++) {
-    inputBox[i].onkeypress = keyPress;
-  }
-  updateList(dataList);
-}
-
-function keyPress(e) {
-  if (e.keyCode === 13) {
-    getBMI();
+// 鍵盤
+function checkEnter(e) {
+  if (e.target.nodeName === 'INPUT') {
+    if (e.keyCode === 13) {
+      getBMI();
+    }
   }
 }
 
 calculatorBtn.addEventListener('click', getBMI, false);
 recordList.addEventListener('click', removeData, false);
+window.addEventListener('keypress', checkEnter, false)
