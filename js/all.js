@@ -124,4 +124,4 @@ function checkEnter(e) {
 
 calculatorBtn.addEventListener('click', getBMI, false);
 recordList.addEventListener('click', removeData, false);
-window.addEventListener('keypress', checkEnter, false)
+window.addEventListener('keypress', checkEnter, false);
