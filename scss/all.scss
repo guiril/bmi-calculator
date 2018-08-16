@@ -54,22 +54,21 @@ h2 {
     margin-right: 0;
     margin-top: 0;
     @include clearfix;
-  }
-  h1 {
+  } 
+  a {
+    display: block;
     width: 117px;
     height: 117px;
     background: url(../images/BMICLogo.png) no-repeat;
-    text-indent: 101%;
+    text-indent: 200%;
     overflow: hidden;
     white-space: nowrap;
     @media (max-width: 414px) {
     float: right;
     }
-    a {
-      display: block;
-    }
   }
 }
+
 
 .calculator {
   float: left;

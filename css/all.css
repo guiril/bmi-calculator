@@ -138,23 +138,20 @@ h2 {
   }
 }
 
-.logo h1 {
+.logo a {
+  display: block;
   width: 117px;
   height: 117px;
   background: url(../images/BMICLogo.png) no-repeat;
-  text-indent: 101%;
+  text-indent: 200%;
   overflow: hidden;
   white-space: nowrap;
 }
 
 @media (max-width: 414px) {
-  .logo h1 {
+  .logo a {
     float: right;
   }
-}
-
-.logo h1 a {
-  display: block;
 }
 
 .calculator {
