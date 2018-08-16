@@ -149,31 +149,27 @@ h2 {
   .showAnswer {
     display: none;
     position: relative;
-    text-align: center;
     width: 120px;
     height: 120px;
     border-radius: 50%;
     border: 6px solid;
-    #answer  {
+  }
+  #answer  {
     position: absolute;
     top: 37px;
     left: 13px;
+    text-align: center;
     font-size: 32px;
-    }
-    .txt {
+    span {
       display: block;
-      position: absolute;
-      bottom: 21px;
-      left: 40px;
+      margin-top: 5px;
       font-size: 14px;
     }
     .reset-icon {
       display: block;
-      position: absolute;
       width: 35px;
       height: 35px;
-      bottom: 0;
-      right: 0;
+      transform: translate(67px, -15px);
       border-radius: 50%;
       font-size: 20px;
       color: $gray;
@@ -184,7 +180,6 @@ h2 {
       }
     }
   }
-
   #showClassification {
     position: absolute;
     top: 38px;
