@@ -21,29 +21,28 @@ function getBMI() {
   var answer = document.querySelector('#answer');
 
   if (checkNum(height, weight) === false) {
-    return
+    return;
   }
 
   if (BMI < 18.5) {
     classification = '過輕';
-    color = '#31BAF9'
+    color = '#31BAF9';
   } else if (BMI >= 18.5 && BMI <= 24.9) {
     classification = '理想';
-    color = '#86D73E'
+    color = '#86D73E';
   } else if (BMI > 24.9 && BMI <= 29.9) {
     classification = '過重';
-    color = '#FF982D'
+    color = '#FF982D';
   } else if (BMI > 29.9 && BMI <= 34.9) {
     classification = '輕度肥胖';
-    color = '#FF6C02'
+    color = '#FF6C02';
   } else if (BMI > 34.9 && BMI <= 39.9) {
     classification = '中度肥胖';
-    color = '#FF6C02'
+    color = '#FF6C02';
   } else if (BMI > 39.9) {
     classification = '重度肥胖';
-    color = '#FF1200'
+    color = '#FF1200';
   }
-
 
   var allData = {
     bmiData: BMI,
@@ -56,8 +55,8 @@ function getBMI() {
 
   // 更新資料 
   dataList.push(allData);
-  updateList(dataList);
   localStorage.setItem('dataKey', JSON.stringify(dataList));
+  updateList(dataList);
 
   // 寫入答案
   document.querySelector('#showClassification').innerHTML = classification;
@@ -109,19 +108,19 @@ function removeData(e) {
   if (e.target.nodeName === 'A') {
     dataList.splice(index, 1);
   }
-  localStorage.setItem('dataKey', JSON.stringify(dataList));
   updateList(dataList);
+  localStorage.setItem('dataKey', JSON.stringify(dataList));
 }
 
 // 鍵盤
 function checkEnter(e) {
-  if (e.target.nodeName === 'INPUT') {
-    if (e.keyCode === 13) {
-      getBMI();
-    }
+  if (e.target.nodeName === 'INPUT' && e.keyCode === 13) {
+    getBMI();
   }
 }
 
+var inputBox = document.querySelector('.calculator');
+
 calculatorBtn.addEventListener('click', getBMI, false);
 recordList.addEventListener('click', removeData, false);
-window.addEventListener('keypress', checkEnter, false);
+inputBox.addEventListener('keydown', checkEnter, false);
