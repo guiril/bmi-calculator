@@ -138,12 +138,16 @@ h2 {
   }
 }
 
+.logo h1 {
+  display: inline-block;
+}
+
 .logo a {
   display: block;
   width: 117px;
   height: 117px;
-  background: url(../images/BMICLogo.png) no-repeat;
-  text-indent: 200%;
+  background: url(../images/BMICLogo.png) no-repeat center;
+  text-indent: 101%;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -281,21 +285,15 @@ h2 {
 }
 
 .btn #answer .reset-icon {
+  background: url(../images/icons_loop.png) no-repeat center;
   display: block;
   width: 35px;
   height: 35px;
   -webkit-transform: translate(67px, -15px);
           transform: translate(67px, -15px);
   border-radius: 50%;
-  font-size: 20px;
-  color: #424242;
   border: 3px solid #424242;
   background-color: #86D73E;
-}
-
-.btn #answer .reset-icon .fas {
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
 }
 
 .btn #showClassification {
@@ -440,4 +438,3 @@ h2 {
   height: 100px;
   background-color: #FFD366;
 }
-/*# sourceMappingURL=all.css.map */

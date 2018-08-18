@@ -60,7 +60,7 @@ function getBMI() {
 
   // 寫入答案
   document.querySelector('#showClassification').innerHTML = classification;
-  answer.innerHTML = BMI + '<span>BMI</span><a href="" class="reset-icon"><i class="fas fa-redo"></i></a>';
+  answer.innerHTML = BMI + '<span>BMI</span><a href="" class="reset-icon"></a>';
 
   answerStyle(color);
 };

@@ -54,13 +54,16 @@ h2 {
     margin-right: 0;
     margin-top: 0;
     @include clearfix;
-  } 
+  }
+  h1 {
+    display: inline-block;
+  }
   a {
     display: block;
     width: 117px;
     height: 117px;
-    background: url(../images/BMICLogo.png) no-repeat;
-    text-indent: 200%;
+    background: url(../images/BMICLogo.png) no-repeat center;
+    text-indent: 101%;
     overflow: hidden;
     white-space: nowrap;
     @media (max-width: 414px) {
@@ -165,18 +168,14 @@ h2 {
       font-size: 14px;
     }
     .reset-icon {
+      background: url(../images/icons_loop.png) no-repeat center;
       display: block;
       width: 35px;
       height: 35px;
       transform: translate(67px, -15px);
       border-radius: 50%;
-      font-size: 20px;
-      color: $gray;
       border: 3px solid $gray;
       background-color: #86D73E;
-      .fas {
-        transform: translateY(4px);
-      }
     }
   }
   #showClassification {
