@@ -1,0 +1,27 @@
+{
+  "name": "bmi_calculator",
+  "version": "1.0.0",
+  "description": "六角學院【JavaScript 入門篇 - 學徒的試煉】最終作業",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouiis/bmi_calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ouiis/bmi_calculator/issues"
+  },
+  "homepage": "https://github.com/ouiis/bmi_calculator#readme",
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}

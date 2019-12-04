@@ -1,126 +1,142 @@
-var calculatorBtn = document.querySelector('#calculatorBtn');
-var recordList = document.querySelector('.record-list');
-var dataList = JSON.parse(localStorage.getItem('dataKey')) || [];
+(function () {
+  const getEl = (el) => {
+    return document.querySelector(el)
+  }
+  const heightEl = getEl('#height')
+  const weightEl = getEl('#weight')
+  const calculatorBtn = getEl('#calculatorBtn')
+  const answerContainer = getEl('.calculator-answer-container')
+  const answerReturn = getEl('.calculator-return')
+  const recordList = getEl('.record-list')
+  const dataList = JSON.parse(localStorage.getItem('dataKey')) || []
 
-updateList(dataList);
-
-// 計算 BMI
-function getBMI() {
-  var height = parseInt(document.querySelector('#height').value) / 100;
-  var weight = parseInt(document.querySelector('#weight').value);
-  var BMI = (weight / (height * height)).toFixed(2);
-
-  var classification = '';
-  var color = '';
-
-  var today = new Date();
-  var dd = ('0' + today.getDate()).substr(-2);;
-  var mm = ('0' + (today.getMonth() + 1)).substr(-2);;
-  var yyyy = today.getFullYear();
-
-  var answer = document.querySelector('#answer');
-
-  if (checkNum(height, weight) === false) {
-    return;
+  // 更新紀錄
+  const updateList = (item) => {
+    let str = ''
+    for (var i = 0; i < item.length; i++) {
+      const color = item[i].color
+      const degree = item[i].degree
+      const bmi = item[i].bmi
+      const weight = item[i].weight
+      const height = item[i].height
+      const date = item[i].date
+      str += `<li style="border-color: ${color};">
+        <span>${degree}</span>
+        <span><span class="sm-txt">BMI</span>${bmi}</span>
+        <span><span class="sm-txt">Wieght</span>${weight}kg</span>
+        <span><span class="sm-txt">Height</span>${height * 100}cm</span>
+        <span class="sm-txt">${date}</span>
+        <a href="#" data-index="${i}">清除</a>
+        </li>`
+    }
+    recordList.innerHTML = str
   }
 
-  if (BMI < 18.5) {
-    classification = '過輕';
-    color = '#31BAF9';
-  } else if (BMI >= 18.5 && BMI <= 24.9) {
-    classification = '理想';
-    color = '#86D73E';
-  } else if (BMI > 24.9 && BMI <= 29.9) {
-    classification = '過重';
-    color = '#FF982D';
-  } else if (BMI > 29.9 && BMI <= 34.9) {
-    classification = '輕度肥胖';
-    color = '#FF6C02';
-  } else if (BMI > 34.9 && BMI <= 39.9) {
-    classification = '中度肥胖';
-    color = '#FF6C02';
-  } else if (BMI > 39.9) {
-    classification = '重度肥胖';
-    color = '#FF1200';
+  updateList(dataList)
+
+  // 計算 BMI
+  const getBMI = (height, weight) => {
+    height = parseInt(height) / 100 // 將字串轉成數字
+    weight = parseInt(weight)
+    const BMI = (weight / (height * height)).toFixed(2) // 取到小數點第二位
+
+    const answerNumber = getEl('#number')
+    const answerDegree = getEl('.calculator-degree')
+
+    let degree = ''
+    let color = ''
+
+    const currentTime = new Date()
+    const dd = ('0' + currentTime.getDate()).substr(-2) // 前面補 0 並取後兩位數字
+    const mm = ('0' + (currentTime.getMonth() + 1)).substr(-2)
+    const yyyy = currentTime.getFullYear()
+
+    if (BMI < 18.5) {
+      degree = '過輕'
+      color = '#31BAF9'
+    } else if (BMI >= 18.5 && BMI <= 24.9) {
+      degree = '理想'
+      color = '#86D73E'
+    } else if (BMI > 24.9 && BMI <= 29.9) {
+      degree = '過重'
+      color = '#FF982D'
+    } else if (BMI > 29.9 && BMI <= 34.9) {
+      degree = '輕度肥胖'
+      color = '#FF6C02'
+    } else if (BMI > 34.9 && BMI <= 39.9) {
+      degree = '中度肥胖'
+      color = '#FF6C02'
+    } else if (BMI > 39.9) {
+      degree = '重度肥胖'
+      color = '#FF1200'
+    }
+
+    answerNumber.textContent = BMI
+    answerDegree.textContent = degree
+
+    calculatorBtn.style.display = 'none'
+    answerContainer.style.display = 'flex'
+    answerContainer.style.color = color
+    answerReturn.style.backgroundColor = color
+
+    const allData = {
+      bmi: BMI,
+      weight: weight,
+      height: height,
+      degree: degree,
+      color: color,
+      date: `${mm}-${dd}-${yyyy}`
+    }
+
+    // 更新記錄
+    dataList.push(allData)
+    localStorage.setItem('dataKey', JSON.stringify(dataList))
+    updateList(dataList)
   }
 
-  var allData = {
-    bmiData: BMI,
-    weightData: weight,
-    heightData: height,
-    classData: classification,
-    colorData: color,
-    dateData: mm + '-' + dd + '-' + yyyy
-  };
-
-  // 更新資料 
-  dataList.push(allData);
-  localStorage.setItem('dataKey', JSON.stringify(dataList));
-  updateList(dataList);
-
-  // 寫入答案
-  document.querySelector('#showClassification').innerHTML = classification;
-  answer.innerHTML = BMI + '<span>BMI</span><a href="" class="reset-icon"></a>';
-
-  answerStyle(color);
-};
-
-// 驗證表單
-function checkNum(itemOne, itemTwo) {
-  if (isNaN(itemOne) || isNaN(itemTwo)) {
-    alert('請輸入數字');
-    return false;
-  } else if (itemOne < 0 || itemTwo < 0) {
-    alert('請輸入有效的數字');
-    return false;
+  // 驗證填入的值是否為數字
+  const isNumber = () => {
+    const heightValue = heightEl.value // 不在全域宣告是因為會讀取到最初的值
+    const weightValue = weightEl.value
+    if (!heightValue) {
+      alert('請輸入身高')
+    } else if (!weightValue) {
+      alert('請輸入體重')
+    } else if (isNaN(heightValue) || isNaN(weightValue)) {
+      alert('請輸入數字')
+    } else if (heightValue < 0 || weightValue < 0) {
+      alert('請輸入有效的數字')
+    } else {
+      getBMI(heightValue, weightValue)
+    }
   }
-}
 
-// 答案樣式
-function answerStyle(item) {
-  var answerColor = document.querySelector('.showAnswer');
-  var resetBorder = document.querySelector('.reset-icon');
-  calculatorBtn.style.display = "none";
-  answerColor.style.display = "block";
-  answerColor.style.color = item;
-  resetBorder.style.backgroundColor = item;
-}
-
-// 更新紀錄
-function updateList(item) {
-  var str = '';
-  for (var i = 0; i < item.length; i++) {
-    var color = item[i].colorData;
-    var type = item[i].classData;
-    var bmi = item[i].bmiData;
-    var weight = item[i].weightData;
-    var height = item[i].heightData;
-    var date = item[i].dateData;
-    str += '<li style="border-color: ' + color + ';"><span class="new-txt">' + type + '</span><span class="regu-txt">BMI</span><span class="new-txt">' + bmi + '</span><span class="regu-txt">Wieght</span><span class="new-txt">' + weight + 'kg</span><span class="regu-txt">Height</span><span class="new-txt">' + (height * 100) + 'cm</span> <span class="regu-txt">' + date + '</span><a href="" data-index="' + i + '">清除</a></li>';
+  // 清除單筆資料
+  const removeData = (e) => {
+    e.preventDefault()
+    var index = parseInt(e.target.dataset.index)
+    if (e.target.nodeName === 'A') {
+      dataList.splice(index, 1)
+    }
+    updateList(dataList)
+    localStorage.setItem('dataKey', JSON.stringify(dataList))
   }
-  recordList.innerHTML = str;
-}
 
-// 清除單筆資料
-function removeData(e) {
-  e.preventDefault();
-  var index = parseInt(e.target.dataset.index);
-  if (e.target.nodeName === 'A') {
-    dataList.splice(index, 1);
+  // 鍵盤
+  const checkEnter = (e) => {
+    if (e.keyCode === 13) {
+      isNumber()
+    }
   }
-  updateList(dataList);
-  localStorage.setItem('dataKey', JSON.stringify(dataList));
-}
 
-// 鍵盤
-function checkEnter(e) {
-  if (e.target.nodeName === 'INPUT' && e.keyCode === 13) {
-    getBMI();
-  }
-}
-
-var inputBox = document.querySelector('.calculator');
-
-calculatorBtn.addEventListener('click', getBMI, false);
-recordList.addEventListener('click', removeData, false);
-inputBox.addEventListener('keydown', checkEnter, false);
+  calculatorBtn.addEventListener('click', isNumber, false)
+  answerReturn.addEventListener('click', () => {
+    calculatorBtn.style.display = 'block'
+    answerContainer.style.display = 'none'
+    heightEl.value = ''
+    weightEl.value = ''
+  }, false)
+  recordList.addEventListener('click', removeData, false)
+  heightEl.addEventListener('keydown', checkEnter, false)
+  weightEl.addEventListener('keydown', checkEnter, false)
+})()
