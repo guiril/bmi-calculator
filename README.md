@@ -2,7 +2,7 @@
 
 六角學院【JavaScript 入門篇 - 學徒的試煉】最終作業
 
-[標示文件](https://hexschool.github.io/JavaScript_HomeWork/)
+[View the design mockup](https://hexschool.github.io/JavaScript_HomeWork/)
 
 ### 功能介紹
 
